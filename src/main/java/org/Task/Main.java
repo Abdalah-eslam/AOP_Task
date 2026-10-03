@@ -1,13 +1,7 @@
 package org.Task;
 
-import org.Task.Dynamic_Proxy.instapayService;
-import org.Task.Dynamic_Proxy.paymentService;
-import org.Task.Interfaces_Implement.*;
-import org.springframework.aop.framework.ProxyFactory;
-import org.springframework.context.ApplicationContext;
+import org.Task.Anotation.Service.loggingAOP;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.lang.reflect.Proxy;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -46,6 +40,13 @@ public class Main {
 //      proxy.updateStock("SKU123", 10);
 //      // proxy.updateStock("SKU123", -1);
 
+
+
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AnotationConfig.class);
+
+       loggingAOP service =(loggingAOP) ctx.getBean(loggingAOP.class);
+
+        service.heckStock("aaa");
 
 
     }
